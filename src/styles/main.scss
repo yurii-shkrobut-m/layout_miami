@@ -1,7 +1,77 @@
-@import "utils";
-@import "fonts";
-@import "typography";
+.page {
+  font-family: 'Roboto', sans-serif;
 
-body {
-  background: $c-gray;
+  &__body {
+    margin: 0;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  padding: 24px 20px 80px;
+  height: 100vh;
+
+  background-image: url('../images/header.jpg');
+  background-position: center;
+  background-size: cover;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
+
+    color: #fff;
+
+    &::before {
+      display: block;
+      margin-bottom: 24px;
+      content: "";
+      width: 40px;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 8px;
+    }
+  }
+
+  &__menu-opener {
+    display: block;
+    width: 18px;
+    height: 12px;
+    background-image: url('../images/menu.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url('../images/menu_hover.svg');
+    }
+  }
+
+  &__call {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url('../images/phone.svg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+}
+
+.logo {
+  &__image {
+    height: 48px;
+  }
 }
