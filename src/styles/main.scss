@@ -1,3 +1,12 @@
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+$headerTopPadding: 24px;
+$colorBlue: #0075FF;
+
 .page {
   font-family: 'Roboto', sans-serif;
 
@@ -6,23 +15,78 @@
   }
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0 20px;
+
+  @include onDesktop {
+    padding: 0 40px;
+  }
+}
+
+.logo {
+  &__image {
+    height: 48px;
+
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url('../images/menu.svg');
+
+    &:hover {
+      background-image: url('../images/menu_hover.svg');
+    }
+  }
+
+  &--phone {
+    background-image: url('../images/phone.svg');
+  }
+
+  &--cross {
+    background-image: url('../images/cross.svg');
+  }
+}
+
+.top-actions {
+  --icon-width: 18px;
+
+  display: grid;
+  grid-template-columns: var(--icon-width) 1fr var(--icon-width);
+  justify-items: center;
+  align-items: center;
+
+  @include onDesktop {
+    --icon-width: 24px;
+  }
+}
+
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  box-sizing: border-box;
-  padding: 24px 20px 80px;
-  height: 100vh;
-
   background-image: url('../images/header.jpg');
   background-position: center;
   background-size: cover;
 
-  &__nav {
+  &__content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+
+    box-sizing: border-box;
+    padding: $headerTopPadding 0 80px;
+    height: 100vh;
   }
 
   &__title {
@@ -30,8 +94,13 @@
     font-size: 46px;
     line-height: 40px;
     letter-spacing: -1px;
-
     color: #fff;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
 
     &::before {
       display: block;
@@ -44,34 +113,45 @@
     }
   }
 
-  &__menu-opener {
-    display: block;
-    width: 18px;
-    height: 12px;
-    background-image: url('../images/menu.svg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  &__call {
+    text-decoration: none;
+    position: relative;
 
-    &:hover {
-      background-image: url('../images/menu_hover.svg');
+    @include onDesktop {
+      &::before {
+        content: '+1 234 555-55-55';
+        position: absolute;
+        top: 50%;
+        transform: translate(-100%, -50%);
+
+        display: block;
+        width: max-content;
+        padding-right: 20px;
+
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: #fff;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
   }
-
-  &__call {
-    display: block;
-    width: 18px;
-    height: 18px;
-    background-image: url('../images/phone.svg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-
 }
 
-.logo {
-  &__image {
-    height: 48px;
+.menu {
+  background-color: $colorBlue;
+
+  &__content {
+    box-sizing: border-box;
+    height: 100vh;
+    padding: $headerTopPadding 0;
   }
 }
