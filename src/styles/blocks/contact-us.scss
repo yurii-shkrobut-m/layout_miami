@@ -1,3 +1,33 @@
-* {
-  box-sizing: border-box;
+.contact-us {
+  &__info {
+    margin: 0 0 24px;
+
+    &--last {
+      margin: 0 0 32px;
+    }
+
+    @include onDesktop {
+      margin: 0;
+    }
+  }
+
+  &__info-title {
+    font-size: 14px;
+    line-height: 27px;
+    color: #9fadc2;
+    margin: 0 0 8px;
+  }
+
+  &__info-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__field {
+    margin: 0 0 16px;
+
+    &--last {
+      margin: 0 0 32px;
+    }
+  }
 }
