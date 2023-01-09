@@ -1,23 +1,33 @@
 .about {
+  &__content {
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
+    }
+  }
+
+  &__description {
+    @include onDesktop {
+      grid-column: 7 / 13;
+    }
+  }
+
   &__title {
     margin: 0 0 48px;
+
     font-weight: 700;
     font-size: 36px;
-    // align-items: center;
     line-height: 36px;
     letter-spacing: -1.5px;
     color: #000;
 
     @include onDesktop {
+      grid-column: 1 / 5;
       margin-bottom: 0;
       font-size: 48px;
       line-height: 48px;
     }
-  }
-
-  &__title-link {
-    text-decoration: none;
-    color: $colorBlue;
   }
 
   &__subtitle {
@@ -27,8 +37,6 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 30px;
-    color: $colorBlue;
-    text-decoration: none;
   }
 
   &__paragraph {
